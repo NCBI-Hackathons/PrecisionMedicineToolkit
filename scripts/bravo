@@ -1,0 +1,176 @@
+#!/usr/bin/python
+
+import argparse
+import os
+import json
+import urllib
+import requests
+import time
+
+
+argparser = argparse.ArgumentParser(description = 'Manage Google Oauth 2.0 authentication for Bravo API.')
+commands = argparser.add_subparsers(dest = 'command', title = 'Commands')
+login_command = commands.add_parser('login', help = 'Authorize access to Bravo API.')
+token_command = commands.add_parser('print-access-token', help = 'Display access token for Bravo API.')
+revoke_command = commands.add_parser('revoke', help = 'Revoke all access tokens for Bravo API.')
+
+
+USER_HOME = os.path.expanduser("~")
+BRAVO_DIR = '.bravo'
+BRAVO_CREDSTORE = 'credstore'
+BRAVO_API_VERSION = 'v1'
+BRAVO_AUTH_API = 'https://bravo.sph.umich.edu/api/{}/auth/auth'.format(BRAVO_API_VERSION)
+BRAVO_TOKEN_API = 'https://bravo.sph.umich.edu/api/{}/auth/token'.format(BRAVO_API_VERSION)
+BRAVO_REVOKE_API = 'https://bravo.sph.umich.edu/api/{}/auth/revoke'.format(BRAVO_API_VERSION)
+BRAVO_IP_API = 'https://bravo.sph.umich.edu/api/{}/auth/ip'.format(BRAVO_API_VERSION)
+
+
+class BravoException(Exception):
+    def __init__(self, message):
+        self.message = message
+    def __str__(self):
+        return self.message
+
+
+def credstore_exists():
+    return os.path.isfile(os.path.join(USER_HOME, BRAVO_DIR, BRAVO_CREDSTORE))
+
+
+def create_credstore():
+    p = os.path.join(USER_HOME, BRAVO_DIR)
+    if not os.path.isdir(p):
+        os.mkdir(p, 0700)
+    p = os.path.join(p, BRAVO_CREDSTORE)
+    if not os.path.isfile(p):
+        open(p, 'a').close()
+        os.chmod(p, 0600)
+
+
+def read_credstore():
+    required = ['access_token', 'created', 'token_type', 'revoked']
+    with open(os.path.join(USER_HOME, BRAVO_DIR, BRAVO_CREDSTORE), 'r') as credstore_file:
+        credstore = json.load(credstore_file)
+        active_credentials = credstore.get('active', None)
+        if active_credentials is None or not isinstance(active_credentials, basestring):
+            raise BravoException('Invalid or outdated credentials store. You may need to run login.')
+        all_credentials = credstore.get('all', None)
+        if all_credentials is None or not isinstance(all_credentials, dict):
+            raise BravoException('Invalid or outdated credentials store. You may need to run login.')
+        if active_credentials not in all_credentials:
+            raise BravoException('Invalid or outdated credentials store. You may need to run login.')
+        for ip, credentials in all_credentials.iteritems():
+            if not isinstance(credentials, dict):
+               raise BravoException('Invalid or outdated credentials store. You may need to run login.')
+            if not all(k in credentials for k in required):
+               raise BravoException('Invalid access token entry in credentials store. You may need to run login.')
+        return credstore
+
+
+def write_credstore(data):
+    path = os.path.join(USER_HOME, BRAVO_DIR, BRAVO_CREDSTORE)
+    with open(path, 'w') as credstore:
+        json.dump(data, credstore, indent = 4)
+    os.chmod(path, 0600)
+
+
+def login():
+    try:
+        bravo_response = requests.get(BRAVO_IP_API)
+        if bravo_response.status_code != 200:
+            raise BravoException('Error while obtaining your public IP with Bravo API authentication server.')
+        bravo_response_data = bravo_response.json()
+        ip = bravo_response_data['ip']
+        if not credstore_exists():
+            create_credstore()
+            credstore = { 'active': None, 'all': {} }
+        else:
+            try:
+                credstore = read_credstore()
+                credentials = credstore['all'].get(ip, None)
+                if credentials is not None and not credentials['revoked']:
+                    credstore['active'] = ip
+                    write_credstore(credstore)
+                    print 'You are signed in.'
+                    return
+            except:
+                credstore = { 'active': None, 'all': {} }
+        bravo_response = requests.get(BRAVO_AUTH_API)
+        if bravo_response.status_code != 200:
+            if bravo_response.status_code == 400:   
+                raise BravoException(bravo_response.json().get('error', 'Failed to obtain authentication link.'))
+            else:
+                raise BravoException('Error while obtaining authentication link from Bravo API authentication server.')  
+        bravo_response_data = bravo_response.json()
+        auth_url = bravo_response_data['auth_url']
+        auth_token = bravo_response_data['auth_token']
+        print 'Go to the following link in your browser:\n\n{}\n'.format(bravo_response_data['auth_url'])
+        print '\nContacting Bravo API for access tokens...'
+        while True:
+            time.sleep(5)
+            bravo_response = requests.post(BRAVO_TOKEN_API, data = {'auth_token': auth_token})
+            if bravo_response.status_code != 200:
+                if bravo_response.status_code == 400:
+                    raise BravoException(bravo_response.json().get('error', 'Failed to obtain authentication link.'))
+                else:
+                    raise BravoException('Error while obtaining authentication token from Bravo API authentication server.')
+            bravo_response_data = bravo_response.json()
+            if bravo_response_data['access_token'] is not None:
+                break
+        credstore['active'] = bravo_response_data['ip']
+        credstore['all'][bravo_response_data['ip']] = {
+            'access_token': bravo_response_data['access_token'],
+            'token_type': bravo_response_data['token_type'],
+            'created': int(time.time()),
+            'revoked': False
+        }
+        write_credstore(credstore)
+        print 'Done.'
+        print 'You are signed in.'
+    except requests.exceptions.RequestException:
+        raise BravoException('Error while accessing Bravo API authentication server.')
+
+
+def print_access_token():
+    credstore = read_credstore()
+    print credstore['all'][credstore['active']]['access_token']
+
+
+def revoke():
+    if not credstore_exists():
+        print 'No access tokens to revoke.'
+        return
+    try:
+        credstore = read_credstore()
+        ip_revoked = list()
+        for ip, credentials in credstore['all'].iteritems():
+            if not credentials['revoked']:
+                if not ip_revoked:
+                    bravo_response = requests.get(BRAVO_REVOKE_API, params = {'access_token': credentials['access_token']})
+                    if bravo_response.status_code != 200:
+                        if bravo_response.status_code == 400:
+                            raise BravoException(bravo_response.json().get('error', 'Failed to revoke access.'))
+                        else:
+                            raise BravoException('Bravo API authentication server is not accessible.')
+                ip_revoked.append(ip)
+                credentials['revoked'] = True
+        if ip_revoked:
+            write_credstore(credstore)
+            print 'Access tokens have been successfully revoked.'
+        else:
+            print 'No access tokens to revoke.'
+    except requests.exceptions.RequestException:
+        raise BravoException('Error while accessing Bravo API authentication server.')
+
+
+if __name__ == '__main__':
+    args = argparser.parse_args()
+    try:
+        if args.command == 'login':
+            login()
+        elif args.command == 'print-access-token':
+            print_access_token()
+        elif args.command == 'revoke':
+            revoke()
+    except BravoException as e:
+        print e
+
