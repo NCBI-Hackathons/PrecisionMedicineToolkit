@@ -1,21 +1,23 @@
 # PrecisionMedicineToolkit
 
 # Introduction
-Collaboration between clinical and bioinformatics work is difficult as data exchange formats for EMRs are very different. This toolkit searches through available databases to extract genetic information for a given EMR. A FHIR-compliant JSON will be created from the input EMR file.
+Electronic medical database information needs to be easily accesible and translatable between scientists. Electronic Medical Record (EMR) data should follow specific file formats so they can be analyzed with ease. Collaboration between clinical and bioinformatics work is currently difficult as data exchange formats for EMRs are very different.  
 
 # What is this
-A FHIR-compliant JSON will be created from input EMR file. 
+This is pipeline that uses a set of tools to perform analysis on input electronic medical database data. This toolkit takes an input EMR JSON that will search databases to extract relevant information. A FHIR-compliant JSON will be created from the input EMR file. 
 
 # How to use it 
 
 # Requirements
-SRA Toolkit
++ SRA Toolkit
 
-SnpEff
++ SnpEff
 
-TOPMed
++ TOPMed
 
-GWAS
++ GWAS
+
++ dbGaP
 
 # Workflow
 ![from the presentation](https://i.imgur.com/CcdnGVI.png)
