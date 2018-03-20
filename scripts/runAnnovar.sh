@@ -18,8 +18,9 @@ ARGUMENTS:
 	-i	FILE	[Required]	Input VCF containing variants to annotate.
 	-o	FILE	[Required]	Output VCF path.
 	-g	STRING	[Optional]	Genome build (Default: hg19)
-					hg19
-					hg38
+					Valid options:
+						hg19
+						hg38
 	
 EXAMPLE USAGE:
 	bash annovar.sh -i myvariants.vcf -o myvariants_anno.vcf
