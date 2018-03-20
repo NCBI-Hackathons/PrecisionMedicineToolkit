@@ -1,6 +1,7 @@
 import os
 import os.path
 import sys
+
 ### GLOBAL VARIABLES
 sraListFile = sys.argv[1]
 SRA_list = []
@@ -13,20 +14,19 @@ def createScripts(SRA_ID):
     shellFile = open(subDirName + "/" + SRA_ID + ".sh", "w")
     # Write to the file
     shellFile.write("#!/bin/bash\n\n")
-    shellFile.write("cd Project_Space\n\n")
     shellFile.write("sratoolkit.2.9.0-centos_linux64/bin/vdb-validate " + SRA_ID + ".sra &> \
-                     Project_Space/validation_outputs/" +  SRA_ID \
+                     validation_outputs/" +  SRA_ID \
                      + ".validation_out\n\n")
-    shellFile.write("if grep -q 'err' Project_Space/validation_outputs/" \
+    shellFile.write("if grep -q 'err' validation_outputs/" \
                      + SRA_ID + ".validation_out; then\n")
     shellFile.write("\techo 'Verification of " + SRA_ID + ".sra failed'\n")
-    shellFile.write("\tcp Project_Space/validation_outputs/" \
-                      + SRA_ID + ".validation_out Project_Space/validation_failures/\n")
+    shellFile.write("\tcp validation_outputs/" \
+                      + SRA_ID + ".validation_out validation_failures/\n")
     shellFile.write("else\n")
     shellFile.write("\techo 'No errors found in " + SRA_ID + ".sra'\n")
     shellFile.write("\t# Convert the SRA into fastq\n")
     shellFile.write("\tsratoolkit.2.9.0-centos_linux64/bin/fastq-dump -v --gzip --split-files \
-                      -O fastq_files/Project_Space/sra/" \
+                      -O fastq_files/sra/" \
                       + SRA_ID + ".sra\n")
     shellFile.write("fi\n")
     shellFile.close()
