@@ -4,7 +4,7 @@
 Collaboration between clinical and bioinformatics work is difficult as data exchange formats for EMRs are very different. This toolkit searches through available databases to extract genetic information for a given EMR. A FHIR-compliant JSON will be created from the input EMR file.
 
 # What is this
-A FHIR-compliant JSON will be created from input EMR file. 
+This tool creates a FHIR-compliant JSON file from an input EMR file after extracting relevant biological information from databases. 
 
 # How to use it 
 
