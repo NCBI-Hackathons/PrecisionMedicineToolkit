@@ -5,3 +5,5 @@ Collaboration between clinical and bioinformatics work is difficult as data exch
 
 # Requirements
 SRA Toolkit
+=======
+![from the presentation](https://i.imgur.com/CcdnGVI.png)
