@@ -11,14 +11,20 @@ A FHIR-compliant JSON will be created from input EMR file.
 # Requirements
 SRA Toolkit
 
-SnpEff
+SnpEff (http://snpeff.sourceforge.net/index.html#)
 
-TOPMed
+TOPMed (Bravo API https://bravo.sph.umich.edu/freeze5/hg38/help)
 
 GWAS
+
+Ref of tools uses
 
 # Workflow
 ![from the presentation](https://i.imgur.com/CcdnGVI.png)
 
 # Installation
 SRA Toolkit can be installed here: https://ncbi.github.io/sra-tools/install_config.html
+
+
+# Bash template  
+`./precisionmed_wrapper.sh -i inputjsonfile.txt -o outputjsonfile`

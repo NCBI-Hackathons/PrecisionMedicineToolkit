@@ -1,0 +1,4 @@
+bravo==1
+snpeff==4.3T
+annovar==2017Jul16
+
