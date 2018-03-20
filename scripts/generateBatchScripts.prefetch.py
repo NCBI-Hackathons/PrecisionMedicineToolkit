@@ -8,7 +8,7 @@ sraListFile = sys.argv[1]
 SRA_list = []
 ### FUNCTION DEFINITIONS
 def createScripts(SRA_ID):
-    subDirName = SRA_ID
+    subDirName = "SRR_scripts/"+ SRA_ID
     if (not os.path.isdir(subDirName)):
         os.mkdir(subDirName)
     # Create the shell script file
