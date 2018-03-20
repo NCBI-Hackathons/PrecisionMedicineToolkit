@@ -1,8 +1,0 @@
-#!/bin/bash
-#PBS -N sra_X
-#PBS -l walltime=1:15:00
-#PBS -l nodes=80:ppn=32
-#PBS -A groupid
-#PBS -q normal
-aprun -n 1280 -N 16 -ss -d 2 ~anisimov/scheduler/scheduler.x \
-  /base/jobLists/batchX_JobList.txt /bin/bash -noexit &> /base/qsubs/logs/batchX_prefetch.log

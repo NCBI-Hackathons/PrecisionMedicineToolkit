@@ -1,0 +1,4 @@
+##fileformat=VCFv4.0
+##source=./data/example.json
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO
+9	22125503	rs1333049	G	C	.	.	.

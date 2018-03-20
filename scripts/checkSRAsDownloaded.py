@@ -7,7 +7,7 @@ with open(batch_list) as F:
     for line in F:
         batch_IDs.append(line.strip())
 IDs_found = []
-for f in glob.glob("/base/Project_Space/sra/*"):
+for f in glob.glob("Project_Space/sra/*"):
     split_string = f.split("/")
     ID = split_string[-1].split('.')[0]
     IDs_found.append(ID)

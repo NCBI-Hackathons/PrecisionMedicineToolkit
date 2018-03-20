@@ -6,7 +6,7 @@ import sys
 ### GLOBAL VARIABLES
 sraListFile = sys.argv[1]
 batchName = sys.argv[2]
-batchFullPath = "base/batches/" + batchName
+batchFullPath = "batches/" + batchName
 SRA_list = []
 ### FUNCTION DEFINITIONS
 def createScripts(SRA_ID):
