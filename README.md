@@ -1,26 +1,30 @@
 # PrecisionMedicineToolkit
 
 # Introduction
-Electronic medical database information needs to be easily accesible and translatable between scientists. Electronic Medical Record (EMR) data should follow specific file formats so they can be analyzed with ease. Collaboration between clinical and bioinformatics work is currently difficult as data exchange formats for EMRs are very different.  
+Collaboration between clinical and bioinformatics work is difficult as data exchange formats for EMRs are very different. This toolkit searches through available databases to extract genetic information for a given EMR. A FHIR-compliant JSON will be created from the input EMR file.
 
 # What is this
-This is pipeline that uses a set of tools to perform analysis on input electronic medical database data. This toolkit takes an input EMR JSON that will search databases to extract relevant information. A FHIR-compliant JSON will be created from the input EMR file. 
+A FHIR-compliant JSON will be created from input EMR file. 
 
 # How to use it 
 
 # Requirements
-+ SRA Toolkit
+SRA Toolkit
 
-+ SnpEff
+SnpEff (http://snpeff.sourceforge.net/index.html#)
 
-+ TOPMed
+TOPMed (Bravo API https://bravo.sph.umich.edu/freeze5/hg38/help)
 
-+ GWAS
+GWAS
 
-+ dbGaP
+Ref of tools uses
 
 # Workflow
 ![from the presentation](https://i.imgur.com/CcdnGVI.png)
 
 # Installation
 SRA Toolkit can be installed here: https://ncbi.github.io/sra-tools/install_config.html
+
+
+# Bash template  
+`./precisionmed_wrapper.sh -i inputjsonfile.txt -o outputjsonfile`
