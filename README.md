@@ -73,6 +73,7 @@ GWAS catalog, located in /data (https://www.ebi.ac.uk/gwas/docs/about)
 * Expose toolkit to a web interface
 * Validata JSON before processing
 * Create docker component of the pipeline
+* Pass in genome reference as a parameter
 
 # Authors
 Halé Kpetigo (hale.kpetigo@gmail.com)
