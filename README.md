@@ -22,8 +22,6 @@ ANNOVAR can compare variants to existing variant databases and annotate the vari
 
 GWAS is a technique for determining genetic loci associated with common disease or traits using large groups of various across genomes. PrecisionMedicineToolkit uses the NHGRI GWAS catalog to annotate the input variants.
 
-![Sample variant copy identified](/images/variantcopy.png)
-
 
 # How to use it
 `./precisionmed_wrapper.sh -i inputjsonfile.txt [-o outputDirectory]`
