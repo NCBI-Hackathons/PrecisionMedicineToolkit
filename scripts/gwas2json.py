@@ -8,9 +8,9 @@ import pandas as pd
 def gwas2json(gwasfile, outputdir):
     """Function to grab entries from GWAS file and spit out FHIR-compliant JSON
     in outputdir. Currently I am making it output (a) ResearchStudy file(s)."""
-    gwas = pd.read_table('results.txt', header = 0)
+    gwas = pd.read_table(gwasfile, header = 0)
     for index, row in gwas.iterrows():
-        filename = 'gwas_result{0}.json'.format(index)
+        filename = 'gwas_result_{0}.json'.format(index)
         title = row['STUDY']
         url = row['LINK']
         disease = row['DISEASE/TRAIT']
