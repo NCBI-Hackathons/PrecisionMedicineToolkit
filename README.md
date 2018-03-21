@@ -35,6 +35,14 @@ GWAS is a technique for determining genetic loci associated with common disease 
   This script runs a combination of bash and Python scripts to produce
   ResearchStudy JSON files for GWAS results in the output directory.
 
+## Example Input File
+
+![Example input](/images/example_input.png)
+
+## Example Output File
+
+![Example output](/images/example_output.png)
+
 # Requirements
 SnpEff (http://snpeff.sourceforge.net/index.html#)
 
