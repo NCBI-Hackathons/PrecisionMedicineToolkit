@@ -30,7 +30,7 @@ GWAS is a technique for determining genetic loci associated with common disease 
 
   **-i inputFile** JSON input file.
 
-  **-o outDir**    Specify the directory for output - default is /home/ubuntu/PrecisionMedicineToolkit/output.
+  **-o outDir**    Specify the directory for output - default is /home/ubuntu/PrecisionMedicineToolkit/output/json.
 
   This script runs a combination of bash and Python scripts to produce
   ResearchStudy JSON files for GWAS results in the output directory.
@@ -49,6 +49,9 @@ GWAS catalog, located in /data (https://www.ebi.ac.uk/gwas/docs/about)
   - SRA Toolkit (https://ncbi.github.io/sra-tools/install_config.html)
   - TOPMed (Bravo API https://bravo.sph.umich.edu/freeze5/hg38/help)
 * Integrating with a major EHR software company (such as EPIC)
+* Expose toolkit to a web interface
+* Validata JSON before processing
+* Create docker component of the pipeline
 
 # Authors
 Halé Kpetigo (hale.kpetigo@gmail.com)
