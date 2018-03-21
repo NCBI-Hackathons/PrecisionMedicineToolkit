@@ -11,7 +11,7 @@ function usage {
 	echo "usage:  $programname -i inputFile [-o outDir]"
 	echo ""
 	echo "  -i inputFile JSON input file."
-	echo "  -o outDir    Specify the directory for output - default is "$OUTPUT_DIR
+	echo "  -o outDir    Specify the directory for output - default is "$OUTPUT_DIR/json
 	echo ""
 }
 
