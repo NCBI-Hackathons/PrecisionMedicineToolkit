@@ -66,7 +66,11 @@ python $WDIR/json2vcf.py -i $INPUTFILE -o $OUTPUT_DIR/vcf.$BASEINPUTFILE.vcf
 # Step 2 - Run VCF on snpeff
 $WDIR/snpeff_wrapper.sh -i $OUTPUT_DIR/vcf.$BASEINPUTFILE.vcf
 
-# Step 3 - Run VCF on annovar
+# Step 3 - Run VCF on annovar -i -o -g hg19 / hg38
+$WDIR/runAnnovar .sh -i $OUTPUT_DIR/vcf.$BASEINPUTFILE.vcf -o $OUTPUT_DIR/annv.vcf.$BASEINPUTFILE.vcf -g hg19
 
-# Step 4 - Run Annotaion resuslt on GWAS
-python $WDIR/vcf_gwas.py -i $OUTPUT_DIR/ann.vcf.$BASEINPUTFILE.vcf -g $WDIR/../data/gwas_catalog_v1.0-associations_e91_r2018-03-13.tsv -o $OUTPUT_DIR/gwas.vcf.$BASEINPUTFILE.vcf
+# Step 4 - Run Annotaion resuslt on GWAS on Snpeff output
+python $WDIR/vcf_gwas.py -i $OUTPUT_DIR/ann.vcf.$BASEINPUTFILE.vcf -g $WDIR/../data/gwas_catalog_v1.0-associations_e91_r2018-03-13.tsv -o $OUTPUT_DIR/gwas.snp.$BASEINPUTFILE.vcf
+
+# Step 4 - Run Annotaion resuslt on GWAS on annovar output
+python $WDIR/vcf_gwas.py -i $OUTPUT_DIR/annv.vcf.$BASEINPUTFILE.vcf -g $WDIR/../data/gwas_catalog_v1.0-associations_e91_r2018-03-13.tsv -o $OUTPUT_DIR/gwas.anv.$BASEINPUTFILE.vcf
