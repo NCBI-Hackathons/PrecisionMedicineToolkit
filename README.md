@@ -37,6 +37,9 @@ GWAS is a technique for determining genetic loci associated with common disease 
 
 ## Example Input File
 
+The following example input was taken from https://www.hl7.org/fhir/sequence-example.json.html
+and edited manually to include chromosome and reference genome information.
+
 ![Example input](/images/example_input.png)
 
 ## Example Output File
