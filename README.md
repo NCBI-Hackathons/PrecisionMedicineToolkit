@@ -9,7 +9,7 @@
 * A FHIR-compliant output would be useful for scientists for extraction of variant information, RESTful API, and administrative actions.
 * This toolkit addresses the needs to make this information easily accessible by creating a FHIR-compliant output that would be easily accessible by different types of bioinformaticians.
 
-# What is this
+# What is this?
 This toolkit creates a FHIR-compliant JSON file from an input EMR file after extracting relevant biological information from databases. It runs the contents of the EMR file through various databases and collects information from them. PrecisionMedicineToolkit uses various steps for extracting genomic information.
 
 ![Workflow](/images/pipeline.png)
