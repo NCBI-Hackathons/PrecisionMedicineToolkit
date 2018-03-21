@@ -5,7 +5,7 @@
 # Introduction
 
 * EMR data must be easily accessible for experts from clinical informatics and bioinformatics to use.
-* Existing software annotatte variants and identify SNPs associated with disease, but no software integrates findings from variant annotation in a FHIR-compliant format. 
+* Existing software annotatte variants and identify SNPs associated with disease, but no software integrates findings from variant annotation in a FHIR-compliant format.
 * A FHIR-compliant output would be useful for scientists for extraction of variant information, RESTful API, and administrative actions.
 * This toolkit addresses the needs to make this information easily accessible by creating a FHIR-compliant output that would be easily accessible by different types of bioinformaticians.
 
@@ -31,21 +31,25 @@ GWAS is a technique for determining genetic loci associated with common disease 
 `./precisionmed_wrapper.sh -i inputjsonfile.txt [-o outputDirectory]`
 
   -i inputFile JSON input file.
-  
+
   -o outDir    Specify the directory for output - default is /home/ubuntu/PrecisionMedicineToolkit/output.
 
-# Requirements
-SRA Toolkit (https://ncbi.github.io/sra-tools/install_config.html)
+  This script runs a combination of bash and Python scripts to produce
+  ResearchStudy JSON files for GWAS results in the output directory.
 
+# Requirements
 SnpEff (http://snpeff.sourceforge.net/index.html#)
 
-TOPMed (Bravo API https://bravo.sph.umich.edu/freeze5/hg38/help)
+ANNOVAR (http://annovar.openbioinformatics.org/en/latest/)
 
-GWAS (https://www.ebi.ac.uk/gwas/docs/about)
+GWAS catalog, located in /data (https://www.ebi.ac.uk/gwas/docs/about)
 
 # Future Directions
 * Modifying to accept multiple JSON variant files
 * Adding annotation JSON files with relevant information from SnpEff and Annovar
+* Integrate the following tools:
+  - SRA Toolkit (https://ncbi.github.io/sra-tools/install_config.html)
+  - TOPMed (Bravo API https://bravo.sph.umich.edu/freeze5/hg38/help)
 * Integrating with a major EHR software company (such as EPIC)
 
 # Authors
