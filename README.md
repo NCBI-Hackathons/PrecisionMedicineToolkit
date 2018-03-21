@@ -30,7 +30,7 @@ SnpEff (http://snpeff.sourceforge.net/index.html#)
 
 TOPMed (Bravo API https://bravo.sph.umich.edu/freeze5/hg38/help)
 
-GWAS
+GWAS (https://www.ebi.ac.uk/gwas/docs/about)
 
 # Workflow
 ![from the presentation](https://i.imgur.com/PPOXC7U.png)
