@@ -18,7 +18,7 @@ TOPMed (Bravo API https://bravo.sph.umich.edu/freeze5/hg38/help)
 GWAS
 
 # Workflow
-![from the presentation](https://i.imgur.com/CcdnGVI.png)
+![from the presentation](https://i.imgur.com/PPOXC7U.png)
 
 
 # Bash template  
