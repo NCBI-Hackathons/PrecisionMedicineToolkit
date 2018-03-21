@@ -10,7 +10,7 @@ version="0.1"
 function usage {
 	echo "usage:  $programname -i inputFile [-o outDir]"
 	echo ""
-	echo "  -i inputFile VCF input file."
+	echo "  -i inputFile JSON input file."
 	echo "  -o outDir    Specify the directory for output - default is "$OUTPUT_DIR
 	echo ""
 }
