@@ -12,7 +12,7 @@
 # What is this
 This toolkit creates a FHIR-compliant JSON file from an input EMR file after extracting relevant biological information from databases. It runs the contents of the EMR file through various databases and collects information from them. PrecisionMedicineToolkit uses various steps for extracting genomic information.
 
-![Workflow](https://i.imgur.com/PPOXC7U.png)
+![Workflow](/images/pipeline.png)
 
 The workflow shows the steps and databases used in creating a FHIR-compliant JSON format.
 
