@@ -80,6 +80,8 @@ class App(object):
             raise SystemExit('Must specify input GWAS results file with -i')
         if opts.output is None:
             raise SystemExit('Must specify output JSON file with -o')
+        if not os.path.exists(opts.output):
+            os.makedirs(opts.output)
         gwas2json(opts.input, opts.output)
 
 
