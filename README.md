@@ -1,5 +1,7 @@
 # PrecisionMedicineToolkit
 
+![FHIR-compliant output](https://i.imgur.com/tm9iZWM.png)
+
 # Introduction
 Collaboration between clinical and bioinformatics work is difficult as data exchange formats for Electronic Medical Records (EMRs) are very different. This toolkit searches through available databases to extract genetic information for a given EMR. A FHIR-compliant JSON will be created from the input EMR file.
 
@@ -33,7 +35,7 @@ TOPMed (Bravo API https://bravo.sph.umich.edu/freeze5/hg38/help)
 GWAS (https://www.ebi.ac.uk/gwas/docs/about)
 
 # Workflow
-![from the presentation](https://i.imgur.com/PPOXC7U.png)
+![Workflow](https://i.imgur.com/PPOXC7U.png)
 
 # Authors
 Halé Kpetigo (hale.kpetigo@gmail.com)
