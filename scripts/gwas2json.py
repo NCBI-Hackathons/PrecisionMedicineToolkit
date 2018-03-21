@@ -10,7 +10,7 @@ def gwas2json(gwasfile, outputdir):
     in outputdir. Currently I am making it output (a) ResearchStudy file(s)."""
     gwas = pd.read_table(gwasfile, header = 0)
     for index, row in gwas.iterrows():
-        filename = 'gwas_result_{0}.json'.format(index)
+        filename = os.path.join(outputdir, 'gwas_result_{0}.json'.format(index))
         title = row['STUDY']
         url = row['LINK']
         disease = row['DISEASE/TRAIT']
@@ -28,11 +28,10 @@ def gwas2json(gwasfile, outputdir):
         var_type = row['CONTEXT']
         write_ResearchStudy(filename = filename, title = title, url = url,
                             disease = disease, sample_info = sample_info,
-                            gene = gene, rsID = rsid, var_type = var_type,
-                            outputdir = outputdir)
+                            gene = gene, rsID = rsid, var_type = var_type)
 
 def write_ResearchStudy(filename, title, url, disease, sample_info, gene, rsID,
-                        var_type, outputdir):
+                        var_type):
     """See format here: https://www.hl7.org/fhir/researchstudy.html"""
     with open(filename, 'w') as outfile:
         json.dump({"resourceType" : "ResearchStudy",
