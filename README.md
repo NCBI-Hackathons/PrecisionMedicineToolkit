@@ -24,7 +24,7 @@ dbGaP provides APIs to access their respective data that allow metadata transfer
 
 GWAS is a technique for determining genetic loci associated with common disease or traits using large groups of various across genomes. 
 
-![Sample variant copy identified](https://imgur.com/WrJcO.png)
+![Sample variant copy identified](https://i.imgur.com/U0FlhJe.png)
 
 
 # How to use it 
