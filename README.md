@@ -15,6 +15,7 @@ This toolkit addresses the needs to make this information easily accessible by c
 This tool creates a FHIR-compliant JSON file from an input EMR file after extracting relevant biological information from databases. It runs the contents of the EMR file through various databases and collects information from them.  
 
 # How to use it 
+`./precisionmed_wrapper.sh -i inputjsonfile.txt -o outputjsonfile`
 
 # Requirements
 SRA Toolkit (https://ncbi.github.io/sra-tools/install_config.html)
@@ -27,10 +28,6 @@ GWAS
 
 # Workflow
 ![from the presentation](https://i.imgur.com/PPOXC7U.png)
-
-
-# Bash template  
-`./precisionmed_wrapper.sh -i inputjsonfile.txt -o outputjsonfile`
 
 # Authors
 Halé Kpetigo (hale.kpetigo@gmail.com)
