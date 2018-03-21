@@ -89,7 +89,8 @@ fi
 #Run annovar
 OUTDIR=$(dirname ${OutputVCF})
 echo -e "Now calling ANNOVAR. Direct output will be placed in ${OUTDIR}" >&2
-perl ${ANNOSCRIPT_QUICK} ${InputVCF} humandb/ -buildver ${GENOMEBUILD} -out ${OUTDIR}/pmtannovar${DateString} -remove -protocol refGene,exac03,avsnp150,gnomad_genome,clinvar_20170905 -operation g,f,f,f,f -nastring . -polish -vcfinput
+#perl ${ANNOSCRIPT_QUICK} ${InputVCF} humandb/ -buildver ${GENOMEBUILD} -out ${OUTDIR}/pmtannovar${DateString} -remove -protocol refGene,exac03,avsnp150,gnomad_genome,clinvar_20170905 -operation g,f,f,f,f -nastring . -polish -vcfinput
+perl ${ANNOSCRIPT_QUICK} ${InputVCF} humandb/ -buildver ${GENOMEBUILD} -out ${OUTDIR}/pmtannovar${DateString} -remove -protocol refGene,exac03,avsnp150,clinvar_20170905 -operation g,f,f,f -nastring . -polish -vcfinput
 
 FINDRESULTS=$(find ${OUTDIR} -maxdepth 1 -iname "pmtannovar${DateString}*.vcf")
 if [ -z "${FINDRESULTS}" ]; then
