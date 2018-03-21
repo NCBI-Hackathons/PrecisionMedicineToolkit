@@ -32,8 +32,16 @@ GWAS is a technique for determining genetic loci associated with common disease 
 
   **-o outDir**    Specify the directory for output - default is /home/ubuntu/PrecisionMedicineToolkit/output/json.
 
-  This script runs a combination of bash and Python scripts to produce
+  This bash script takes an into file which is a FHIR compliant JSON. The script is a wrapper that runs a combination of bash and Python scripts to produce
   ResearchStudy JSON files for GWAS results in the output directory.
+
+  The underlying tools it runs:
+  	** json2vcf.py --> Python script to convert JSON to VCF file
+  	** snpeff_wrapper.sh --> Bash script that uses VCF to search using snpeff
+	** runAnnovar.sh --> Bash script that uses VCF to search using Annovar
+	** vcf_gwas.py --> Python script that uses VCF to search using GWAS
+	** gwas2json.py --> Python script that converts GWAS output to JSON
+
 
 ## Example Input File
 
