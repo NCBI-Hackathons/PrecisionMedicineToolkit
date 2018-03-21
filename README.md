@@ -74,6 +74,7 @@ GWAS catalog, located in /data (https://www.ebi.ac.uk/gwas/docs/about)
 * Validata JSON before processing
 * Create docker component of the pipeline
 * Pass in genome reference as a parameter
+* Run in parallel to spead up result
 
 # Authors
 Halé Kpetigo (hale.kpetigo@gmail.com)
