@@ -77,11 +77,11 @@ perl ${ANNOSCRIPT} -buildver hg19 -downdb -webfrom annovar exac03 ${DBDIR}/
 echo -e "Now downloading ExAC (GRCh38)..." >&2
 perl ${ANNOSCRIPT} -buildver hg38 -downdb -webfrom annovar exac03 ${DBDIR}/
 
-echo -e "Now downloading gnomAD (GRCh37)..." >&2
-perl ${ANNOSCRIPT} -buildver hg19 -downdb -webfrom annovar gnomad_genome ${DBDIR}/
+#echo -e "Now downloading gnomAD (GRCh37)..." >&2
+#perl ${ANNOSCRIPT} -buildver hg19 -downdb -webfrom annovar gnomad_genome ${DBDIR}/
 
-echo -e "Now downloading gnomAD (GRCh38)..." >&2
-perl ${ANNOSCRIPT} -buildver hg38 -downdb -webfrom annovar gnomad_genome ${DBDIR}/
+#echo -e "Now downloading gnomAD (GRCh38)..." >&2
+#perl ${ANNOSCRIPT} -buildver hg38 -downdb -webfrom annovar gnomad_genome ${DBDIR}/
 
 echo -e "Now downloading dbSNP (GRCh37)..." >&2
 perl ${ANNOSCRIPT} -buildver hg19 -downdb -webfrom annovar avsnp150 ${DBDIR}/
