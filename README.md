@@ -5,8 +5,8 @@
 # Introduction
 
 * EMR data must be easily accessible for experts from clinical informatics and bioinformatics to use.
-* Polygenic SNP Search Tool (PSST) was invented to identify multiple SNPs that are associated with diseases. GenomicRobots is a web-based tool that simplifies the process of secure retrieval of patients genotypic information and sharing between collaborators. WGSA extracts information but does not give a FHIR-compliant output.
-* FHIR-compliant output would be useful for scientists for extraction of variant information, RESTful API, and administrative actions.
+* Existing software annotatte variants and identify SNPs associated with disease, but no software integrates findings from variant annotation in a FHIR-compliant format. 
+* A FHIR-compliant output would be useful for scientists for extraction of variant information, RESTful API, and administrative actions.
 * This toolkit addresses the needs to make this information easily accessible by creating a FHIR-compliant output that would be easily accessible by different types of bioinformaticians.
 
 # What is this
