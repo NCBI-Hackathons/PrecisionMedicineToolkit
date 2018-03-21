@@ -97,6 +97,6 @@ if [ -z "${FINDRESULTS}" ]; then
 	echo -e "ANNOVAR output VCF could not be found. Please check ${OUTDIR} for candidates..." >&2
 	exit 1
 fi
-OUTPUT=$(cat ${FINDRESULTS} | head -1)
+OUTPUT=$(echo -e "${FINDRESULTS}" | head -1)
 echo -e "File ${FINDRESULTS} was found. Assuming to be ANNOVAR output..." >&2
 mv ${OUTPUT} ${OutputVCF}
