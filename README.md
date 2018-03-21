@@ -44,6 +44,8 @@ and edited manually to include chromosome and reference genome information.
 
 ## Example Output File
 
+An example of a generated GWAS FHIR-compliant ResearchStudy file (see https://www.hl7.org/fhir/researchstudy.html).
+
 ![Example output](/images/example_output.png)
 
 # Requirements
