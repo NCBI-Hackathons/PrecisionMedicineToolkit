@@ -98,5 +98,5 @@ if [ -z "${FINDRESULTS}" ]; then
 	exit 1
 fi
 OUTPUT=$(echo -e "${FINDRESULTS}" | head -1)
-echo -e "File ${FINDRESULTS} was found. Assuming to be ANNOVAR output..." >&2
+echo -e "File ${OUTPUT} was found. Assuming to be ANNOVAR output..." >&2
 mv ${OUTPUT} ${OutputVCF}
