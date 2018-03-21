@@ -22,7 +22,7 @@ def gwas2json(gwasfile, outputdir):
             replication_sample_size = row['REPLICATION SAMPLE SIZE']
         else:
             replication_sample_size = 'No replication sample size provided'
-        sample_info = initial_sample_size + replication_sample_size
+        sample_info = initial_sample_size + '/' + replication_sample_size
         gene = row['REPORTED GENE(S)']
         rsid = row['SNPS']
         var_type = row['CONTEXT']
