@@ -65,7 +65,7 @@ if [ ! -s ${ANNOSCRIPT_MAIN} ]; then
 	exit 1
 fi
 
-DateString=$(date +\"%Y%m%d%H%M%S\")
+DateString=$(date +%Y%m%d%H%M%S)
 INSTALLSCRIPT="${SCRIPTDIR}/installAnnovar.sh"
 INSTALLFILE="${ANNODIR}/pmt_install"
 NEEDSINSTALL="false"
