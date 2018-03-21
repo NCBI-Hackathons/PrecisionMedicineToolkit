@@ -30,7 +30,7 @@ GWAS is a technique for determining genetic loci associated with common disease 
 # How to use it
 `./precisionmed_wrapper.sh -i inputjsonfile.txt [-o outputDirectory]`
 
-  -i inputFile JSON input file.
+  -i inputFile JSON input file
   -o outDir    Specify the directory for output - default is /home/ubuntu/PrecisionMedicineToolkit/output
 
 # Requirements
