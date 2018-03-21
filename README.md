@@ -1,6 +1,6 @@
 # PrecisionMedicineToolkit
 
-![FHIR-compliant output](https://i.imgur.com/tm9iZWM.png)
+![PrecisionMedicineToolkit](/images/pmtk.png)
 
 # Introduction
 
@@ -16,13 +16,13 @@ This toolkit creates a FHIR-compliant JSON file from an input EMR file after ext
 
 The workflow shows the steps and databases used in creating a FHIR-compliant JSON format.
 
-![ANNOVAR output](https://i.imgur.com/jliJAzN.png)
+![ANNOVAR output](/images/annovar.png)
 
 ANNOVAR can compare variants to existing variant databases and annotate the variant records with any database values it retrieves. Annovar exists as a suite of Perl scripts and supplementary data files, and thus can in theory be run on any system with a working perl interpreter. ANNOVAR annotates genetic variants detected from diverse genomes (including human genome hg18, hg19, hg38, as well as mouse, worm, fly, yeast and many others).
 
 GWAS is a technique for determining genetic loci associated with common disease or traits using large groups of various across genomes. PrecisionMedicineToolkit uses the NHGRI GWAS catalog to annotate the input variants.
 
-![Sample variant copy identified](https://i.imgur.com/U0FlhJe.png)
+![Sample variant copy identified](/images/variantcopy.png)
 
 
 # How to use it
@@ -30,7 +30,7 @@ GWAS is a technique for determining genetic loci associated with common disease 
 
   **-i inputFile** JSON input file.
 
-  **-o outDir**    Specify the directory for output - default is /home/ubuntu/PrecisionMedicineToolkit/output.
+  **-o outDir**    Specify the directory for output - default is /home/ubuntu/PrecisionMedicineToolkit/output/json.
 
   This script runs a combination of bash and Python scripts to produce
   ResearchStudy JSON files for GWAS results in the output directory.
@@ -57,6 +57,9 @@ GWAS catalog, located in /data (https://www.ebi.ac.uk/gwas/docs/about)
   - SRA Toolkit (https://ncbi.github.io/sra-tools/install_config.html)
   - TOPMed (Bravo API https://bravo.sph.umich.edu/freeze5/hg38/help)
 * Integrating with a major EHR software company (such as EPIC)
+* Expose toolkit to a web interface
+* Validata JSON before processing
+* Create docker component of the pipeline
 
 # Authors
 Halé Kpetigo (hale.kpetigo@gmail.com)
