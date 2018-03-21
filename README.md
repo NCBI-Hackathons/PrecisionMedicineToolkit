@@ -25,7 +25,7 @@ GWAS
 `./precisionmed_wrapper.sh -i inputjsonfile.txt -o outputjsonfile`
 
 # Authors
-Hale Kpetigo 
+Halé Kpetigo (hale.kpetigo@gmail.com)
 
 Syed Hussain Ather (shussainather@gmail.com)
 

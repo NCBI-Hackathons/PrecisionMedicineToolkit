@@ -5,10 +5,11 @@ import vcf
 import subprocess
 
 def vcf_gwas(input_vcf, gwas_catalog, output_file):
+    os.system("head -n 1 " + gwas_catalog + " > " + output_file)
     vcf_reader = vcf.Reader(open(input_vcf, 'r'))
     for record in vcf_reader:
         rsid = record.ID
-        bash_command = "grep '" + rsid + "' " + gwas_catalog + " > " + output_file
+        bash_command = "grep '" + rsid + "' " + gwas_catalog + " >> " + output_file
         os.system(bash_command)
 
 class App(object):
