@@ -18,7 +18,7 @@ The workflow shows the steps and databases used in creating a FHIR-compliant JSO
 
 ![ANNOVAR output](/images/annovar.png)
 
-ANNOVAR can compare variants to existing variant databases and annotate the variant records with any database values it retrieves. Annovar exists as a suite of Perl scripts and supplementary data files, and thus can in theory be run on any system with a working perl interpreter. ANNOVAR annotates genetic variants detected from diverse genomes (including human genome hg18, hg19, hg38, as well as mouse, worm, fly, yeast and many others).
+ANNOVAR can compare variants to existing variant databases and annotate the variant records with any database values it retrieves. Annovar exists as a suite of Perl scripts and supplementary data files, and thus can in theory be run on any system with a working perl interpreter. ANNOVAR annotates genetic variants detected from diverse genomes (including human genome hg18, hg19, hg38, as well as mouse, worm, fly, yeast and many others). PrecisionMedicineToolkit uses ANNOVAR along with SnpEff to filter variants for further analysis.
 
 GWAS is a technique for determining genetic loci associated with common disease or traits using large groups of various across genomes. PrecisionMedicineToolkit uses the NHGRI GWAS catalog to annotate the input variants.
 
